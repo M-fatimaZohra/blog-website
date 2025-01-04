@@ -6,7 +6,9 @@ import { Adamina } from "next/font/google";
 import { Button } from '@/components/ui/button';
 import Link from "next/link"
 import { FaArrowLeft } from "react-icons/fa";
-import { Any } from 'next-sanity';
+// import CommentSection from '@/app/components/commentSection';
+// import { Any } from 'next-sanity';
+
 
 
 
@@ -26,28 +28,29 @@ const bebasNeue = Bebas_Neue({
 });
 
 type BlogParams = {
-  params: {
-    id:string ;
-  };
+  params: Promise<{id:string}>
 };
 
- async function getBlogById(id: string) {
+ async function fetchID(id: string) {
 
-  const blogData = await client.fetch(`*[_type == 'blog' && _id == $id] { _id, title, description }`, { id });
+  const blogData = await client.fetch( `*[_type == 'blog' && _id == $id]{ _id, title, description }`,{ id } );
+if(!blogData.length){
+  throw new Error(`No blog found with the id "${id}"`)
+}
 
   return blogData[0] //get only index we want to return single object not array
  }
 
  
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 
-// Using `any` because specifying types causes issues with the `.next` folder
 
-async function Blog({ params }:BlogParams| Any)  {
+
+
+async function Blog({ params }:BlogParams){
 
   
 
-  const blogData = await getBlogById(params.id); // Fetch blog data using the `id` from URL
+  const blogData = await fetchID((await params).id); // Fetch blog data using the `id` from URL
   return (
     //must render on Url
     <div className="flex flex-col justify-between items-center ">
@@ -65,6 +68,8 @@ async function Blog({ params }:BlogParams| Any)  {
         </p>
       </div>
       </div>
+      {/* <CommentSection/> */}
+
       <div className='w-full py-[20px] flex justify-center items-center'>
     <Button variant="outline" size="lg2" className=" border-black drop-shadow-[2px_2px_0px_rgba(0,0,0,0.25)]  text-gray-800 active:translate-y-[2px] active:drop-shadow-none "  ><Link href="./" className='flex justify-between items-center w-full md:px-8 px-4' ><FaArrowLeft /> Go Back</Link>
      </Button>
@@ -74,3 +79,5 @@ async function Blog({ params }:BlogParams| Any)  {
 }
 
 export default Blog
+
+//is my code syntax is correct?

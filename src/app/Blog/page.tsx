@@ -63,6 +63,7 @@ async function Blog() {
       }) }
      
     </div>
+    
     <div className='w-full py-[20px] flex justify-center items-center'>
     <Button variant="outline" size="lg2" className=" border-black drop-shadow-[2px_2px_0px_rgba(0,0,0,0.25)]  text-gray-800 active:translate-y-[2px] active:drop-shadow-none "  ><Link href="./" className='flex justify-between items-center w-full md:px-8 px-4' ><FaArrowLeft /> Go Back</Link>
      </Button>

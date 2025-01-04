@@ -7,6 +7,7 @@ const blog = defineType({
     name: 'blog',
     type: 'document',
     fields: [
+     
      defineField({
         
         title: 'Title',
@@ -19,8 +20,9 @@ const blog = defineType({
         name: 'description',
         type:"text"
       })
-     
-      ]
+     ,
+    
+    ]
   })
   
   export default blog;
