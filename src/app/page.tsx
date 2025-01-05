@@ -40,7 +40,7 @@ export default async function Home() {
   return (
     <div className="py-20 flex flex-col justify-between items-center ">
       <div className="flex justify-center items-center flex-col w-full">
-        <h1 className='lg:text-[125px] text-[80px] animate-[pulse_5s_ease-in-out_1] duration-500'style={bebasNeue.style}>Dewll Days</h1>
+        <h1 className='lg:text-[125px] text-[80px] animate-[pulse_5s_ease-in-out_1] duration-500'style={bebasNeue.style}>Dwell Days</h1>
         <p style={merriweather.style} className="lg:text-[18px] text-[16px]">Get to see blogs that match your taste</p>
       </div>
       <div className="grid grid-cols-1   xl:grid-cols-3  md:grid-cols-2 h-auto gap-4 py-10 px-8 sm:px-20 md:px-5 lg:px-5">
