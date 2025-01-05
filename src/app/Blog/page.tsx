@@ -15,9 +15,10 @@ const merriweather = Merriweather({
 
 
   interface Blog {
-    _id: string,
+    slug: string,
     title: string,
-    description:string
+    description:string,
+    image:string
   } 
 
   const bebasNeue = Bebas_Neue({
@@ -27,7 +28,7 @@ const merriweather = Merriweather({
 
   async function getBlog() {
 
-    const Fetch = await client.fetch(`*[_type == 'blog']{ _id, title,description } `)
+    const Fetch = await client.fetch(`*[_type == 'blog']{ title,description,"slug":slug.current ,"image": image.asset->url} `)
     return Fetch
   }
   getBlog()
@@ -38,22 +39,25 @@ async function Blog() {
    
   return (
     <div className="  ">
-    <div className="flex justify-center items-center px-4 flex-col w-full bg-slate-300 ">     
+    <div className="flex justify-between items-center px-4 flex-col w-full bg-slate-300 ">     
       <h1 className='text-[60px] drop-shadow-[4px_2px_0px_rgba(0,0,0,0.9)] text-white'style={bebasNeue.style}>Dwell Days</h1>
       <p style={merriweather.style} className='text-[16px] text-center md:text-[20px] drop-shadow-[3px_1px_0px_rgba(0,0,0,0.9)] text-white'>Get to see blogs that match your taste</p>
     </div>
-    <div className="flex flex-col gap-4 py-20 px-5">
+    <div className="grid grid-cols-3 gap-4 py-20 px-5">
       {blogData.map((blog:Blog, index:number)=>{
        return (
-        <div key={index} className="flex justify-center flex-col items-start gap-4 border-solid border-2 bg-[#dce3fa] text-gray-800  border-black rounded-lg  py-2 px-3 drop-shadow-[4px_2px_0px_rgba(0,0,0,0.25)]" >
+        <div key={index} className="flex justify-between flex-col items-start gap-4 border-solid border-2 bg-[#dce3fa] text-gray-800  border-black rounded-lg  py-2 px-3 drop-shadow-[4px_2px_0px_rgba(0,0,0,0.25)]" >
         <h1 className="text-xl underline font-bold" style={merriweather.style}>{blog.title}</h1>
         <hr/>
-        <div className='flex justify-between flex-row items-center w-full '>
+        <div className='flex justify-between gap-5 flex-col items-center w-auto '>
+          <div className='flex flex-row  justify-center items-center w-auto h-[] border-double border-black border-[5px] '>
+          <img src={blog.image} className='w-[500px] h-fit '/>
+          </div>
             <div>
             <p className="text-[16px] md:text-[18px] line-clamp-3  ">{blog.description}</p>
             </div>
         
-        <Button variant="outline" size="sm" className="border-black drop-shadow-[2px_2px_0px_rgba(0,0,0,0.25)]  text-gray-800 active:translate-y-[2px] active:drop-shadow-none "  ><Link href={`/Blog/${blog._id}`}>View</Link>
+        <Button variant="outline" size="sm" className="border-black drop-shadow-[2px_2px_0px_rgba(0,0,0,0.25)]  text-gray-800 active:translate-y-[2px] active:drop-shadow-none "  ><Link href={`/Blog/${blog.slug}`}>View</Link>
         </Button>
         
         </div>

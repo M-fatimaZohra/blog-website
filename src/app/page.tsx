@@ -17,13 +17,13 @@ const bebasNeue = Bebas_Neue({
   subsets: ['latin'],
 });
 interface Blog {
-  _id: string,
+  slug: string,
   title: string,
   description:string
 }
 async function getBlog() {
 
-  const Fetch = await client.fetch(`*[_type == 'blog']{ _id, title,description } `)
+  const Fetch = await client.fetch(`*[_type == 'blog']{ title ,description,"slug":slug.current} `)
 
 
   return Fetch
@@ -49,7 +49,7 @@ export default async function Home() {
           <div key={index} className="flex hover:animate-[pulse_500ms_ease-in-out_1]  justify-center flex-col translate-y-1 hover:-translate-y-3  ease-in duration-200 items-center gap-4 border-solid border-2 bg-[#dce3fa] text-gray-800 border-black rounded-lg w-auto  h-auto py-2  px-1 drop-shadow-[4px_2px_0px_rgba(0,0,0,0.25)]" >
           <h1 className="lg:text-2xl text-[25px] font-bold">{blog.title}</h1>
           <p className="lg:w-[400px]  text-[18px] line-clamp-[7] px-2  ">{blog.description}</p>
-          <Button variant="outline" size="sm" className="border-black drop-shadow-[2px_2px_0px_rgba(0,0,0,0.25)] active:translate-y-[2px] active:drop-shadow-none " ><Link href={`/Blog/${blog._id}`}>View</Link></Button>
+          <Button variant="outline" size="sm" className="border-black drop-shadow-[2px_2px_0px_rgba(0,0,0,0.25)] active:translate-y-[2px] active:drop-shadow-none " ><Link href={`/Blog/${blog.slug}`}>View</Link></Button>
           </div>
          )
            

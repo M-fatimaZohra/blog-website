@@ -18,9 +18,36 @@ const blog = defineType({
       defineField({
         title: 'Description',
         name: 'description',
-        type:"text"
+        type:"text",
+       
+        
       })
      ,
+     defineField({
+      title: 'Image',
+      name: 'image',
+      type:"image"
+    })
+   ,
+   defineField({
+    title: 'Content',
+    name: 'content',
+    type:"array",
+    of:[{
+      type:"block"
+    }]
+  })
+ ,
+ 
+ defineField({
+  title: 'Slug_name',
+  name: 'slug',
+  type:"slug",
+options:{
+  source:"title"
+}
+})
+,  
     
     ]
   })

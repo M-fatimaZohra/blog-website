@@ -22,7 +22,7 @@ function page() {
         <h1 className='lg:text-[125px] text-[80px] animate-[pulse_5s_ease-in-out_1] duration-500'style={bebasNeue.style}>Dewll Days</h1>
         <p style={merriweather.style} className="lg:text-[18px] text-[16px]">Get to see blogs that match your taste</p>
       </div>
-      <div className="flex justify-center items-start px-4 py-20 w-auto sm:w-auto lg:w-[1000px] gap-5  flex-col  border-black border-[2px] border-solid shadow-[8px_8px_0px_rgba(0,0,0,0.25)]">
+      <div className="flex justify-center items-start px-4 py-20 w-auto sm:w-auto lg:w-[1000px] gap-5  flex-col bg-white  border-black border-[2px] border-solid shadow-[8px_8px_0px_rgba(0,0,0,0.25)]">
         <div className="flex justify-center items-start flex-col w-full gap-3 ">
           <h2 className="md:text-2xl text-lg" style={bebasNeue.style}>
             What Makes Dwell Days Special?
