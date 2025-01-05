@@ -43,7 +43,7 @@ async function Blog() {
       <h1 className='text-[60px] drop-shadow-[4px_2px_0px_rgba(0,0,0,0.9)] text-white'style={bebasNeue.style}>Dwell Days</h1>
       <p style={merriweather.style} className='text-[16px] text-center md:text-[20px] drop-shadow-[3px_1px_0px_rgba(0,0,0,0.9)] text-white'>Get to see blogs that match your taste</p>
     </div>
-    <div className="grid grid-cols-3 gap-4 py-20 px-5">
+    <div className="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2  gap-4 py-20 px-5">
       {blogData.map((blog:Blog, index:number)=>{
        return (
         <div key={index} className="flex justify-between flex-col items-start gap-4 border-solid border-2 bg-[#dce3fa] text-gray-800  border-black rounded-lg  py-2 px-3 drop-shadow-[4px_2px_0px_rgba(0,0,0,0.25)]" >
